@@ -1,7 +1,14 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+// Controllers
+use App\Http\Controllers\Api\PageController;
+use App\Http\Controllers\Api\PostController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Quando un utente accede a questa URL, Laravel chiamerà il metodo "test" del controller "PageController" per gestire la richiesta e restituire la risposta.
+// Route::get('/test', [PageController::class, 'test']);
+
+Route::name('api.')->group(function () {
+    Route::get('/test', [PageController::class, 'test']);
+
+    Route::resource('posts', PostController::class)->only([
+        'index', 'show'
+    ]);
 });
+
