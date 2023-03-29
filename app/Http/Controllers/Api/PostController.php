@@ -17,7 +17,21 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('category', 'technologies')->paginate(5);
+        $postsPerPage = 5;
+
+        if (
+            request()->input('per_page')
+            &&
+            (
+                request()->input('per_page') == 10
+                ||
+                request()->input('per_page') == 11
+            )
+        ) {
+            $postsPerPage = request()->input('per_page');
+        }
+
+        $posts = Post::with('category', 'technologies')->paginate($postsPerPage);
 
         return response()->json([
             'success'=>true,
