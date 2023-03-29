@@ -33,6 +33,13 @@ class PostController extends Controller
 
         $posts = Post::with('category', 'technologies')->paginate($postsPerPage);
 
+        foreach ($posts as $post) {
+            if ($post->img) {
+                $post->img = asset('storage/'.$post->img);
+            }
+            
+        }
+
         return response()->json([
             'success'=>true,
             'code'=> 200,
