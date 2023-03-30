@@ -16,11 +16,19 @@ class Post extends Model
         'category_id'
     ];
 
+    protected $appends = [
+        'formatted_created_at'
+    ];
+
     public function category() {
         return $this->belongsTo(Category::class);
     }
 
     public function technologies() {
         return $this->belongsToMany(Technology::class);
+    }
+
+    public function getFormattedCreatedAtAttribute() {
+        return date('d/m/Y \a\l\l\e H:i', strtotime($this->created_at));
     }
 }
