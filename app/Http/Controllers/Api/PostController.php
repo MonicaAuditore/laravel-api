@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $postsPerPage = 5;
+        $postsPerPage = 10;
 
         if (
             request()->input('per_page')
