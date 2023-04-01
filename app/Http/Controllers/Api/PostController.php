@@ -17,15 +17,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        $postsPerPage = 10;
+        $postsPerPage = 8;
 
         if (
             request()->input('per_page')
             &&
             (
-                request()->input('per_page') == 10
+                request()->input('per_page') == 8
                 ||
-                request()->input('per_page') == 11
+                request()->input('per_page') == 4
             )
         ) {
             $postsPerPage = request()->input('per_page');

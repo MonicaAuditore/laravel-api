@@ -39,6 +39,18 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="category_id">
+                        categoria
+                    </label>
+                    <select name="category_id" id="category_id" class="form-control">
+                        <option value="">Nessuna categoria</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-3">
                     <label>
                         tecnologia
                     </label>
@@ -68,6 +80,8 @@
                        
                     
                 </div>
+
+                
 
                 <div class="mb-3">
                     <label for="img" class="form-label">Immagine del progetto</label>
@@ -102,7 +116,7 @@
 
 
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-success mb-3">Aggiungi progetto</button>
+                    <button type="submit" class="btn btn-success mb-3">Modifica progetto</button>
                   </div>
 
             </form>
